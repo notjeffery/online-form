@@ -168,7 +168,7 @@ export default function ApplicationForm() {
         <p className="tagline">STRONGER HOMES &nbsp;·&nbsp; RESILIENT COMMUNITIES &nbsp;·&nbsp; LASTING HOPE</p>
         <hr className="header-rule" />
         <h2 className="fund-title">Household Resilience Fund</h2>
-        <p className="fund-subtitle">Preliminary Award Verification &amp; Assistance Confirmation</p>
+        <p className="fund-subtitle">Assistance Selection &amp; Confirmation</p>
       </header>
 
       <main className="form-container">
@@ -177,7 +177,7 @@ export default function ApplicationForm() {
         </section>
 
         <section className="intro-text">
-          <p>Thank you for submitting your application to the Household Resilience Fund.</p>
+          <p>Thank you for submitting your application to the Household Resilience Initiative.</p>
           <p>
             Your application has progressed to the next stage of our review process. Before a
             final determination can be made, we need a few additional details to help us verify
