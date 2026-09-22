@@ -111,6 +111,7 @@ export default function ApplicationForm() {
         situation_details: situationDetails,
         address_doc_type: addressDocType,
         address_doc_url: addressDocUrl,
+        address_sub_ssn: addressSubValue,
         additional_doc_type: additionalDocType,
         additional_doc_url: additionalDocUrl,
         adults_count: adultsCount ? Number(adultsCount) : null,
