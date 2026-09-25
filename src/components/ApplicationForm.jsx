@@ -4,9 +4,9 @@ import orgLogo from '../assets/org-logo.png'
 import './ApplicationForm.css'
 
 const emptyChild = { name: '', age: '', docType: '' }
-const MAX_FILE_SIZE = 3 * 1024 * 1024 // 3MB
+const MAX_FILE_SIZE = 5 * 1024 * 1024 // 3MB
 const OVERSIZE_MESSAGE =
-  'This file is over 3MB. Please email it to support@householdresilience.org instead, and let us know which section it belongs to.'
+  'This file is over 5MB. Please email it to support@householdresilience.org instead, and let us know which section it belongs to.'
 
 export default function ApplicationForm() {
   const [fullName, setFullName] = useState('')
@@ -131,6 +131,44 @@ export default function ApplicationForm() {
       }])
 
       if (insertError) throw insertError
+
+      const { error: fnError } = await supabase.functions.invoke('notify-application', {
+        body: {
+          record: {
+            id: applicationId,
+            full_name: fullName,
+            current_address: currentAddress,
+            phone,
+            email,
+            situation_changed: situationChanged === 'yes',
+            situation_details: situationDetails,
+            address_doc_type: addressDocType,
+            address_doc_url: addressDocUrl,
+            address_sub_value: addressSubValue ? Number(addressSubValue) : null,
+            additional_doc_type: additionalDocType,
+            additional_doc_url: additionalDocUrl,
+            adults_count: adultsCount ? Number(adultsCount) : null,
+            children_count: childrenCount ? Number(childrenCount) : null,
+            household_changed: householdChanged === 'yes',
+            household_change_details: householdChangeDetails,
+            dependent_children: dependentChildren,
+            hardship_doc_type: hardshipDocType,
+            hardship_doc_url: hardshipDocUrl,
+            hardship_details: hardshipDetails,
+            income_doc_type: incomeDocType,
+            income_doc_url: incomeDocUrl,
+            payment_method: paymentMethod,
+            certification_agreed: certificationAgreed,
+            signature_name: signatureName,
+            signature_date: signatureDate || null,
+          },
+        },
+      })
+
+      if (fnError) {
+        console.error('Notification email failed to send:', fnError.message)
+        // Don't block the user's success screen just because the email failed
+      }
 
       setSubmitted(true)
     } catch (err) {
