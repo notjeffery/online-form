@@ -334,3 +334,10 @@ input[type="file"]{
   margin:0;
   line-height:1.5;
 }
+
+.checkbox-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:0;
+}

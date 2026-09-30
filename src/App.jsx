@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ApplicationForm from './components/ApplicationForm'
 import DisbursementForm from './components/DisbursementForm'
+import VolunteerForm from './components/VolunteerForm'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ApplicationForm />} />
         <Route path="/disbursement" element={<DisbursementForm />} />
+        <Route path="/volunteer" element={<VolunteerForm />} />
       </Routes>
     </BrowserRouter>
   )
