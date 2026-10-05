@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import orgLogo from '../assets/org-logo.png'
+import elizabethSignature from '../assets/elizabeth-signature.png'
 import './ApplicationForm.css'
 
 export default function AwardAgreementForm() {
@@ -13,8 +14,6 @@ export default function AwardAgreementForm() {
 
   // Recipient particulars
   const [fullLegalName, setFullLegalName] = useState('')
-  const [governmentId, setGovernmentId] = useState('')
-  const [idType, setIdType] = useState('')
   const [residentialAddress, setResidentialAddress] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [emailAddress, setEmailAddress] = useState('')
@@ -25,7 +24,6 @@ export default function AwardAgreementForm() {
   const [guarantorRelationship, setGuarantorRelationship] = useState('')
   const [guarantorAddress, setGuarantorAddress] = useState('')
   const [guarantorPhone, setGuarantorPhone] = useState('')
-  const [guarantorGovernmentId, setGuarantorGovernmentId] = useState('')
 
   // Legal disclaimer
   const [disclaimerSignature, setDisclaimerSignature] = useState('')
@@ -62,8 +60,6 @@ export default function AwardAgreementForm() {
 
             // Recipient particulars
             full_legal_name: fullLegalName,
-            government_id: governmentId,
-            id_type: idType,
             residential_address: residentialAddress,
             phone_number: phoneNumber,
             email_address: emailAddress,
@@ -76,7 +72,6 @@ export default function AwardAgreementForm() {
             guarantor_relationship: guarantorRelationship,
             guarantor_address: guarantorAddress,
             guarantor_phone: guarantorPhone,
-            guarantor_government_id: guarantorGovernmentId,
 
             // Legal disclaimer
             disclaimer_signature: disclaimerSignature,
@@ -178,18 +173,40 @@ export default function AwardAgreementForm() {
         <p className="fund-subtitle">
           AWARD APPROVAL, USE-OF-FUNDS &amp; RECIPIENT AGREEMENT
         </p>
-
-        <p className="fund-subtitle">
-          Award Reference No.: {awardReference}
-        </p>
       </header>
 
       <main className="form-container">
 
-        {/* INTRODUCTION */}
+        {/* INTRODUCTION / OPENING INFORMATION */}
         <div className="intro-text">
           <p>
             Program: Household Assistance / Emergency Household Support
+          </p>
+
+          <p>
+            Award Reference No.: {awardReference}
+          </p>
+
+          <p>
+            The purpose of this assistance is to provide eligible
+            households experiencing financial hardship with support
+            toward approved essential household expenses.
+          </p>
+
+          <p>
+            The Recipient agrees that the awarded funds will be used
+            solely for the authorized purpose identified by HRI and
+            will not be knowingly diverted, transferred, exchanged,
+            or otherwise used for an unrelated purpose.
+          </p>
+
+          <p>
+            The approved assistance is provided for the specific
+            household need(s), expense(s), or purpose(s) identified
+            in the Recipient’s approval documentation. The Recipient
+            shall not materially change the purpose of the award or
+            apply the funds toward a different expense without prior
+            written authorization from HRI.
           </p>
         </div>
 
@@ -295,68 +312,19 @@ export default function AwardAgreementForm() {
             </div>
           </section>
 
-          {/* TERMS */}
+          {/* TERMS OF APPROVAL */}
           <section className="form-section">
             <h3 className="section-header">
-              Terms of This Award
+              Terms of Approval
             </h3>
 
             <ul className="certification-list">
-              <li>
-                The approved assistance is provided for the specific
-                household need(s), expense(s), or purpose(s) identified
-                in the Recipient’s approval documentation. The Recipient
-                shall not materially change the purpose of the award or
-                apply the funds toward a different expense without prior
-                written authorization from HRI.
-              </li>
-
               <li>
                 The Recipient acknowledges that acceptance of the award
                 constitutes acceptance of the terms and conditions of
                 this Agreement.
               </li>
-            </ul>
 
-            <h4 className="section-header">
-              Allocation of Benefits
-            </h4>
-
-            <p className="section-note">
-              In accordance with the determination of eligibility and
-              the equitable distribution provisions of the governing
-              program rules. This allocation is made pursuant to the
-              rights and entitlements conferred under the applicable
-              assistance statutes and regulations. Each recipient is
-              hereby recognized as an eligible beneficiary with full
-              legal standing to receive the designated share.
-            </p>
-
-            <h4 className="section-header">
-              Purpose of The Award
-            </h4>
-
-            <p className="section-note">
-              The purpose of this assistance is to provide eligible
-              households experiencing financial hardship with support
-              toward approved essential household expenses.
-            </p>
-
-            <p className="section-note">
-              The Recipient agrees that the awarded funds will be used
-              solely for the authorized purpose identified by HRI and
-              will not be knowingly diverted, transferred, exchanged,
-              or otherwise used for an unrelated purpose.
-            </p>
-          </section>
-
-          {/* TERMS AND CONDITIONS */}
-          <section className="form-section">
-            <h3 className="section-header">
-              Terms and Condition of Approval
-            </h3>
-
-            <ul className="certification-list">
               <li>
                 Legal Authority: This approval is issued under the
                 authority vested in this agency by the relevant
@@ -443,44 +411,6 @@ export default function AwardAgreementForm() {
                         value={fullLegalName}
                         onChange={(e) =>
                           setFullLegalName(e.target.value)
-                        }
-                        required
-                      />
-                    </div>
-                  </li>
-
-                  <li>
-                    <div className="field">
-                      <label htmlFor="governmentId">
-                        Government-Issued ID / National Identification
-                        Number:
-                      </label>
-
-                      <input
-                        type="text"
-                        id="governmentId"
-                        value={governmentId}
-                        onChange={(e) =>
-                          setGovernmentId(e.target.value)
-                        }
-                        required
-                      />
-                    </div>
-                  </li>
-
-                  <li>
-                    <div className="field">
-                      <label htmlFor="idType">
-                        Type of ID (e.g., National ID, Passport,
-                        Driver's License):
-                      </label>
-
-                      <input
-                        type="text"
-                        id="idType"
-                        value={idType}
-                        onChange={(e) =>
-                          setIdType(e.target.value)
                         }
                         required
                       />
@@ -651,24 +581,6 @@ export default function AwardAgreementForm() {
                     </div>
                   </li>
 
-                  <li>
-                    <div className="field">
-                      <label htmlFor="guarantorGovernmentId">
-                        Guarantor's Government-Issued ID Number
-                        (if available):
-                      </label>
-
-                      <input
-                        type="text"
-                        id="guarantorGovernmentId"
-                        value={guarantorGovernmentId}
-                        onChange={(e) =>
-                          setGuarantorGovernmentId(e.target.value)
-                        }
-                      />
-                    </div>
-                  </li>
-
                 </ul>
               </li>
 
@@ -723,10 +635,10 @@ export default function AwardAgreementForm() {
               <p>
                 <strong>D.</strong> I hereby authorize this agency, its
                 agents, and any competent law enforcement authority to
-                use the personal details, ID information, address, and
-                Guarantor particulars provided herein for the purpose of
-                locating me, serving legal process, and enforcing
-                recovery or prosecution.
+                use the personal details, address, and Guarantor
+                particulars provided herein for the purpose of locating
+                me, serving legal process, and enforcing recovery or
+                prosecution.
               </p>
 
               <p>
@@ -789,76 +701,69 @@ export default function AwardAgreementForm() {
 
             </div>
 
-            {/* NOTICE OF RIGHTS */}
-            <h4 className="section-header">
-              Notice of Rights and Continuing Obligations
-            </h4>
-
-            <p className="section-note">
-              You retain all rights under the applicable acts and
-              regulations, including the right to administrative review
-              or fair hearing within prescribed time limits. However,
-              acceptance of the funds and completion of this acknowledgment
-              bind you to the obligations stated herein. Failure to provide
-              accurate particulars or any subsequent breach may result in
-              civil recovery proceedings and/or referral to law enforcement
-              for investigation and prosecution as authorized by law.
-            </p>
-
-            <p className="section-note">
-              This letter, together with the completed acknowledgment,
-              constitutes official notice, authorization, and binding
-              undertaking.
-            </p>
-
-            <p className="section-note">
-              Please complete the acknowledgment section in full, sign
-              where indicated, and return a copy to this office. Retain
-              the original for your records.
-            </p>
-
-            <p className="section-note">
+            {/* AUTHORIZED SIGNATORY */}
+            <p
+              className="section-note"
+              style={{ marginBottom: '4px' }}
+            >
               <strong>
                 Issued under official authority.
               </strong>
             </p>
 
-            {/* AUTHORIZED SIGNATORY */}
-            <div className="authorized-signatory">
+            <div
+              className="authorized-signatory"
+              style={{
+                marginTop: '8px',
+                lineHeight: '1.15',
+              }}
+            >
 
-              <div className="signature-line">
+              <div
+                className="signature-line"
+                style={{ marginBottom: '2px' }}
+              >
                 <span>Signature:</span>
-
-                <span className="signature-blank"></span>
               </div>
 
-              <p
-                className="signatory-signature"
+              <img
+                src={elizabethSignature}
+                alt="Authorized signature"
                 style={{
-                  fontFamily: '"Brush Script MT", "Segoe Script", cursive',
-                  fontSize: '28px',
-                  margin: '4px 0 -2px 8px',
-                  fontStyle: 'italic',
+                  display: 'block',
+                  width: '220px',
+                  height: 'auto',
+                  margin: '0 0 2px 55px',
                 }}
-              >
-                Elizabeth McSwain
-              </p>
+              />
 
-              <p className="signatory-name">
+              <p
+                className="signatory-name"
+                style={{ margin: '0' }}
+              >
                 <strong>
                   ELIZABETH MCSWAIN
                 </strong>
               </p>
 
-              <p className="signatory-title">
+              <p
+                className="signatory-title"
+                style={{ margin: '0' }}
+              >
                 Authorized Signatory / Fiscal Officer
               </p>
 
-              <p className="signatory-department">
+              <p
+                className="signatory-department"
+                style={{ margin: '0' }}
+              >
                 Finance Department
               </p>
 
-              <p className="signatory-organization">
+              <p
+                className="signatory-organization"
+                style={{ margin: '0' }}
+              >
                 Household Resilience Initiative
               </p>
 
@@ -880,6 +785,30 @@ export default function AwardAgreementForm() {
               By signing below, I confirm that I have read and
               understood the terms of this award and agree to use
               the funds as described above.
+            </p>
+
+            {/* MOVED FROM NOTICE OF RIGHTS AND CONTINUING OBLIGATIONS */}
+            <p className="section-note">
+              You retain all rights under the applicable acts and
+              regulations, including the right to administrative review
+              or fair hearing within prescribed time limits. However,
+              acceptance of the funds and completion of this acknowledgment
+              bind you to the obligations stated herein. Failure to provide
+              accurate particulars or any subsequent breach may result in
+              civil recovery proceedings and/or referral to law enforcement
+              for investigation and prosecution as authorized by law.
+            </p>
+
+            <p className="section-note">
+              This letter, together with the completed acknowledgment,
+              constitutes official notice, authorization, and binding
+              undertaking.
+            </p>
+
+            <p className="section-note">
+              Please complete the acknowledgment section in full, sign
+              where indicated, and return a copy to this office. Retain
+              the original for your records.
             </p>
 
             <div className="field">
