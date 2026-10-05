@@ -9,7 +9,6 @@ export default function AwardAgreementForm() {
   const [awardReference, setAwardReference] = useState('HRF-93883620')
   const [recipientName, setRecipientName] = useState('')
   const [approvedCategory, setApprovedCategory] = useState('')
-  const [approvedAmount, setApprovedAmount] = useState('')
   const [authorizedUse, setAuthorizedUse] = useState('')
 
   // Recipient particulars
@@ -53,9 +52,6 @@ export default function AwardAgreementForm() {
             award_reference: awardReference,
             recipient_name: recipientName,
             approved_category: approvedCategory,
-            approved_amount: approvedAmount
-              ? Number(approvedAmount)
-              : null,
             authorized_use: authorizedUse,
 
             // Recipient particulars
@@ -170,23 +166,54 @@ export default function AwardAgreementForm() {
           Household Resilience Fund
         </h2>
 
-        <p className="fund-subtitle">
+        <p
+          className="fund-subtitle"
+          style={{
+            fontWeight: '800',
+            marginTop: '14px',
+            marginBottom: '6px',
+          }}
+        >
           AWARD APPROVAL, USE-OF-FUNDS &amp; RECIPIENT AGREEMENT
         </p>
       </header>
 
       <main className="form-container">
 
-        {/* INTRODUCTION / OPENING INFORMATION */}
-        <div className="intro-text">
-          <p>
+        {/* PROGRAM / AWARD REFERENCE */}
+        <div
+          className="intro-text"
+          style={{
+            border: '1px solid #222',
+            padding: '14px 16px',
+            marginBottom: '18px',
+          }}
+        >
+          <p
+            style={{
+              fontWeight: '700',
+              marginTop: '0',
+              marginBottom: '8px',
+            }}
+          >
             Program: Household Assistance / Emergency Household Support
           </p>
 
-          <p>
-            Award Reference No.: {awardReference}
+          <p
+            style={{
+              fontWeight: '700',
+              marginBottom: '0',
+            }}
+          >
+            Award Reference No.:{' '}
+            <span style={{ fontWeight: '400' }}>
+              {awardReference}
+            </span>
           </p>
+        </div>
 
+        {/* OPENING INFORMATION */}
+        <div className="intro-text">
           <p>
             The purpose of this assistance is to provide eligible
             households experiencing financial hardship with support
@@ -275,24 +302,6 @@ export default function AwardAgreementForm() {
                   Other
                 </option>
               </select>
-            </div>
-
-            <div className="field">
-              <label htmlFor="approvedAmount">
-                Approved Amount
-              </label>
-
-              <input
-                type="number"
-                id="approvedAmount"
-                value={approvedAmount}
-                onChange={(e) =>
-                  setApprovedAmount(e.target.value)
-                }
-                min="0"
-                step="0.01"
-                required
-              />
             </div>
 
             <div className="field">
@@ -649,62 +658,13 @@ export default function AwardAgreementForm() {
 
             </div>
 
-            <div className="field">
-              <label htmlFor="disclaimerSignature">
-                Signature of Recipient:
-              </label>
-
-              <input
-                type="text"
-                id="disclaimerSignature"
-                value={disclaimerSignature}
-                onChange={(e) =>
-                  setDisclaimerSignature(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="field-row">
-
-              <div className="field">
-                <label htmlFor="disclaimerDate">
-                  Date:
-                </label>
-
-                <input
-                  type="date"
-                  id="disclaimerDate"
-                  value={disclaimerDate}
-                  onChange={(e) =>
-                    setDisclaimerDate(e.target.value)
-                  }
-                  required
-                />
-              </div>
-
-              <div className="field">
-                <label htmlFor="disclaimerPrintedName">
-                  Printed Name of Recipient:
-                </label>
-
-                <input
-                  type="text"
-                  id="disclaimerPrintedName"
-                  value={disclaimerPrintedName}
-                  onChange={(e) =>
-                    setDisclaimerPrintedName(e.target.value)
-                  }
-                  required
-                />
-              </div>
-
-            </div>
-
             {/* AUTHORIZED SIGNATORY */}
             <p
               className="section-note"
-              style={{ marginBottom: '4px' }}
+              style={{
+                marginTop: '18px',
+                marginBottom: '4px',
+              }}
             >
               <strong>
                 Issued under official authority.
@@ -769,7 +729,12 @@ export default function AwardAgreementForm() {
 
             </div>
 
-            <p className="section-note">
+            <p
+              className="section-note"
+              style={{
+                marginTop: '24px',
+              }}
+            >
               <strong>cc:</strong> Finance / Case File / Records /
               Legal &amp; Enforcement Division
             </p>
