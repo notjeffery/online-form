@@ -19,10 +19,10 @@ export default function AwardAgreementForm() {
   const [amountAllocated, setAmountAllocated] = useState('')
 
   // Guarantor particulars
-  const [guarantorFullName, setGuarantorFullName] = useState('')
-  const [guarantorRelationship, setGuarantorRelationship] = useState('')
-  const [guarantorAddress, setGuarantorAddress] = useState('')
-  const [guarantorPhone, setGuarantorPhone] = useState('')
+  const [refereeFullName, setRefereeFullName] = useState('')
+  const [refereeRelationship, setRefereeRelationship] = useState('')
+  const [refereeAddress, setRefereeAddress] = useState('')
+  const [refereePhone, setRefereePhone] = useState('')
 
   // Legal disclaimer
   const [disclaimerSignature, setDisclaimerSignature] = useState('')
@@ -64,10 +64,10 @@ export default function AwardAgreementForm() {
               : null,
 
             // Guarantor particulars
-            guarantor_full_name: guarantorFullName,
-            guarantor_relationship: guarantorRelationship,
-            guarantor_address: guarantorAddress,
-            guarantor_phone: guarantorPhone,
+            guarantor_full_name: refereeFullName,
+            guarantor_relationship: refereeRelationship,
+            guarantor_address: refereeAddress,
+            guarantor_phone: refereePhone,
 
             // Legal disclaimer
             disclaimer_signature: disclaimerSignature,
@@ -505,13 +505,13 @@ export default function AwardAgreementForm() {
               {/* GUARANTOR PARTICULARS */}
               <li>
                 <strong>
-                  Guarantor Particulars
+                  Referee Particulars
                 </strong>{' '}
                 (to be completed by the recipient):
 
                 <p>
                   I hereby nominate the following person as my
-                  Guarantor, who shall be jointly and severally liable
+                  Referee, who shall be jointly and severally liable
                   with me for any breach, misuse, or recovery of the
                   funds:
                 </p>
@@ -520,16 +520,16 @@ export default function AwardAgreementForm() {
 
                   <li>
                     <div className="field">
-                      <label htmlFor="guarantorFullName">
-                        Full Legal Name of Guarantor:
+                      <label htmlFor="refereeFullName">
+                        Full Legal Name of Referee:
                       </label>
 
                       <input
                         type="text"
-                        id="guarantorFullName"
-                        value={guarantorFullName}
+                        id="refereeFullName"
+                        value={refereeFullName}
                         onChange={(e) =>
-                          setGuarantorFullName(e.target.value)
+                          setRefereeFullName(e.target.value)
                         }
                         required
                       />
@@ -538,16 +538,16 @@ export default function AwardAgreementForm() {
 
                   <li>
                     <div className="field">
-                      <label htmlFor="guarantorRelationship">
+                      <label htmlFor="refereeRelationship">
                         Relationship to Recipient:
                       </label>
 
                       <input
                         type="text"
-                        id="guarantorRelationship"
-                        value={guarantorRelationship}
+                        id="refereeRelationship"
+                        value={refereeRelationship}
                         onChange={(e) =>
-                          setGuarantorRelationship(e.target.value)
+                          setRefereeRelationship(e.target.value)
                         }
                         required
                       />
@@ -556,15 +556,15 @@ export default function AwardAgreementForm() {
 
                   <li>
                     <div className="field">
-                      <label htmlFor="guarantorAddress">
-                        Guarantor's Residential Address:
+                      <label htmlFor="refereeAddress">
+                        Referee's Residential Address:
                       </label>
 
                       <textarea
-                        id="guarantorAddress"
-                        value={guarantorAddress}
+                        id="refereeAddress"
+                        value={refereeAddress}
                         onChange={(e) =>
-                          setGuarantorAddress(e.target.value)
+                          setRefereeAddress(e.target.value)
                         }
                         rows="3"
                         required
@@ -574,16 +574,16 @@ export default function AwardAgreementForm() {
 
                   <li>
                     <div className="field">
-                      <label htmlFor="guarantorPhone">
-                        Guarantor's Telephone / Mobile Number:
+                      <label htmlFor="refereePhone">
+                        Referee's Telephone / Mobile Number:
                       </label>
 
                       <input
                         type="tel"
-                        id="guarantorPhone"
-                        value={guarantorPhone}
+                        id="refereePhone"
+                        value={refereePhone}
                         onChange={(e) =>
-                          setGuarantorPhone(e.target.value)
+                          setRefereePhone(e.target.value)
                         }
                         required
                       />
@@ -636,7 +636,7 @@ export default function AwardAgreementForm() {
                 <strong>C.</strong> In the event of any breach, default,
                 misuse, or failure to comply with the terms of this
                 authorization and acknowledgment, I (and my nominated
-                Guarantor) shall be jointly and severally liable for the
+                Referee) shall be jointly and severally liable for the
                 full recovery of the amount received, together with any
                 interest, costs, and penalties as provided by law.
               </p>
@@ -644,7 +644,7 @@ export default function AwardAgreementForm() {
               <p>
                 <strong>D.</strong> I hereby authorize this agency, its
                 agents, and any competent law enforcement authority to
-                use the personal details, address, and Guarantor
+                use the personal details, address, and Referee
                 particulars provided herein for the purpose of locating
                 me, serving legal process, and enforcing recovery or
                 prosecution.
